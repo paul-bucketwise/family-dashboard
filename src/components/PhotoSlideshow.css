@@ -16,12 +16,123 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.slideshow-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
 .photo-counter {
   background: rgba(255, 255, 255, 0.2);
   padding: 0.5rem 1rem;
   border-radius: 15px;
   font-weight: bold;
   backdrop-filter: blur(5px);
+}
+
+.google-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.status-indicator.connected {
+  background: rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+  border: 1px solid rgba(76, 175, 80, 0.5);
+}
+
+.status-indicator.mock {
+  background: rgba(255, 193, 7, 0.3);
+  color: #FFC107;
+  border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.sign-out-btn {
+  padding: 0.25rem 0.75rem;
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 8px;
+  color: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sign-out-btn:hover {
+  background: rgba(244, 67, 54, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Authentication UI */
+.photo-slideshow.auth-required {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.auth-prompt {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+}
+
+.auth-prompt h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.auth-prompt p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.auth-button {
+  padding: 1rem 2rem;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.auth-button:hover {
+  background: #3367d6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.auth-error {
+  background: rgba(244, 67, 54, 0.2);
+  color: #F44336;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.auth-note {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 .slideshow-container {

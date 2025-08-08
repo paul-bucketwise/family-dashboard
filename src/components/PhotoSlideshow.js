@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './PhotoSlideshow.css';
+import googlePhotosService from '../services/googlePhotos';
 
 const PhotoSlideshow = () => {
   const [photos, setPhotos] = useState([]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState(null);
 
-  // Mock photos for now - will be replaced with Google Photos API
+  // Mock photos as fallback
   const mockPhotos = [
     {
       id: '1',
@@ -71,19 +74,74 @@ const PhotoSlideshow = () => {
   ];
 
   useEffect(() => {
-    // Simulate loading photos from Google Photos API
     const loadPhotos = async () => {
       setLoading(true);
-      // In a real implementation, this would call Google Photos API
-      // const photos = await fetchGooglePhotos();
-      setTimeout(() => {
+      setAuthError(null);
+
+      try {
+        // Check if API keys are configured
+        if (!process.env.REACT_APP_GOOGLE_API_KEY || !process.env.REACT_APP_GOOGLE_CLIENT_ID) {
+          console.log('Google API keys not configured, using mock photos');
+          setPhotos(mockPhotos);
+          setLoading(false);
+          return;
+        }
+
+        // Initialize Google Photos service
+        await googlePhotosService.initialize();
+
+        // Check if user is already signed in
+        if (googlePhotosService.isSignedIn()) {
+          setIsAuthenticated(true);
+          const realPhotos = await googlePhotosService.getRecentPhotos(7, 10);
+          setPhotos(realPhotos.length > 0 ? realPhotos : mockPhotos);
+        } else {
+          // Use mock photos until user authenticates
+          setPhotos(mockPhotos);
+        }
+      } catch (error) {
+        console.error('Error loading photos:', error);
+        setAuthError('Failed to connect to Google Photos');
         setPhotos(mockPhotos);
-        setLoading(false);
-      }, 1000);
+      }
+
+      setLoading(false);
     };
 
     loadPhotos();
   }, []);
+
+  // Handle Google Photos authentication
+  const handleGoogleAuth = async () => {
+    try {
+      setLoading(true);
+      const success = await googlePhotosService.authenticate();
+      
+      if (success) {
+        setIsAuthenticated(true);
+        const realPhotos = await googlePhotosService.getRecentPhotos(7, 10);
+        setPhotos(realPhotos.length > 0 ? realPhotos : mockPhotos);
+        setAuthError(null);
+      } else {
+        setAuthError('Authentication failed');
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+      setAuthError('Failed to authenticate with Google Photos');
+    }
+    setLoading(false);
+  };
+
+  // Handle sign out
+  const handleSignOut = async () => {
+    try {
+      await googlePhotosService.signOut();
+      setIsAuthenticated(false);
+      setPhotos(mockPhotos);
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
+  };
 
   useEffect(() => {
     // Auto-advance slideshow every 5 seconds
@@ -122,6 +180,29 @@ const PhotoSlideshow = () => {
     );
   }
 
+  // Show authentication prompt if not authenticated and API keys are configured
+  if (!isAuthenticated && process.env.REACT_APP_GOOGLE_API_KEY && process.env.REACT_APP_GOOGLE_CLIENT_ID) {
+    return (
+      <div className="photo-slideshow auth-required">
+        <div className="auth-prompt">
+          <h3>📸 Connect to Google Photos</h3>
+          <p>Connect your Google Photos to show real family memories from this week!</p>
+          {authError && (
+            <div className="auth-error">
+              ⚠️ {authError}
+            </div>
+          )}
+          <button onClick={handleGoogleAuth} className="auth-button">
+            🔗 Connect Google Photos
+          </button>
+          <p className="auth-note">
+            <small>We'll only access photos from the past week for your family dashboard.</small>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   if (photos.length === 0) {
     return (
       <div className="photo-slideshow empty">
@@ -139,8 +220,23 @@ const PhotoSlideshow = () => {
     <div className="photo-slideshow">
       <div className="slideshow-header">
         <h2>📸 This Week's Family Memories</h2>
-        <div className="photo-counter">
-          {currentPhotoIndex + 1} of {photos.length}
+        <div className="slideshow-status">
+          <div className="photo-counter">
+            {currentPhotoIndex + 1} of {photos.length}
+          </div>
+          {isAuthenticated && process.env.REACT_APP_GOOGLE_API_KEY && (
+            <div className="google-status">
+              <span className="status-indicator connected">🔗 Google Photos</span>
+              <button onClick={handleSignOut} className="sign-out-btn">
+                Sign Out
+              </button>
+            </div>
+          )}
+          {!isAuthenticated && process.env.REACT_APP_GOOGLE_API_KEY && (
+            <div className="google-status">
+              <span className="status-indicator mock">📱 Demo Photos</span>
+            </div>
+          )}
         </div>
       </div>
 
