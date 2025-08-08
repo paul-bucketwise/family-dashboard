@@ -1,0 +1,219 @@
+.pocket-money-tracker {
+  padding: 2rem;
+}
+
+.pocket-money-tracker h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.children-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.child-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.child-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.child-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.child-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.weekly-amount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.jobs-section {
+  margin-bottom: 1.5rem;
+}
+
+.jobs-section h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: inherit;
+}
+
+.job-item {
+  margin-bottom: 0.75rem;
+}
+
+.job-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.job-checkbox:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.job-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.job-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.job-value {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.earnings-summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.total-earned {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.completed-jobs {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.allocation-section h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.allocation-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.allocation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.allocation-item label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.allocation-item input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+
+.allocation-item input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.allocation-summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.remaining {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.remaining.over-allocated {
+  color: #ff6b6b;
+}
+
+.warning {
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pocket-money-tracker {
+    padding: 1rem;
+  }
+  
+  .pocket-money-tracker h2 {
+    font-size: 2rem;
+  }
+  
+  .children-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .child-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .allocation-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .allocation-item input {
+    width: 100px;
+  }
+}

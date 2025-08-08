@@ -1,0 +1,264 @@
+.calendar-events {
+  height: 100%;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.events-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.events-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.events-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  scrollbar-width: thin;
+}
+
+.events-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.events-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.events-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #4CAF50;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.event-time {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.event-date {
+  font-weight: 500;
+}
+
+.event-time-slot {
+  opacity: 0.8;
+}
+
+.event-attendees {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.event-countdown {
+  text-align: center;
+  min-width: 80px;
+}
+
+.countdown-text {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.no-events {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.no-events p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.calendar-summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: #4CAF50;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Loading State */
+.calendar-events.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.calendar-events.loading h3 {
+  margin-bottom: 1rem;
+}
+
+.loading-spinner {
+  font-size: 1.1rem;
+  animation: pulse 2s infinite;
+}
+
+/* Event Type Colors */
+.event-card[style*="border-left-color: #4CAF50"] {
+  border-left-color: #4CAF50 !important;
+}
+
+.event-card[style*="border-left-color: #FF9800"] {
+  border-left-color: #FF9800 !important;
+}
+
+.event-card[style*="border-left-color: #2196F3"] {
+  border-left-color: #2196F3 !important;
+}
+
+.event-card[style*="border-left-color: #E91E63"] {
+  border-left-color: #E91E63 !important;
+}
+
+.event-card[style*="border-left-color: #9C27B0"] {
+  border-left-color: #9C27B0 !important;
+}
+
+.event-card[style*="border-left-color: #F44336"] {
+  border-left-color: #F44336 !important;
+}
+
+.event-card[style*="border-left-color: #FF5722"] {
+  border-left-color: #FF5722 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .events-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .event-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .event-details {
+    order: 1;
+  }
+  
+  .event-icon {
+    order: 2;
+  }
+  
+  .event-countdown {
+    order: 3;
+    min-width: auto;
+  }
+  
+  .summary-stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .stat {
+    padding: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-time {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .events-list {
+    max-height: 300px;
+  }
+}
