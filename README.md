@@ -2,6 +2,20 @@
 
 A weekly family dashboard for Brisbane families to manage pocket money, view calendar events, track tasks, and reflect on the week together.
 
+## 👨‍👩‍👧‍👦 Family Context
+- **Location**: Brisbane, Australia
+- **Family**: Parents + 3 children
+- **Children**: Leni (10), Ayda (7), Finn (4)
+- **Meeting Schedule**: Sunday evenings, 30 minutes
+- **Purpose**: Weekly family planning, pocket money allocation, reflection
+
+## 🎯 Project Goals
+- Cast to TV for family meetings
+- Interactive pocket money tracking (Barefoot Investor approach)
+- Google integration (Calendar, Photos, Tasks)
+- Weekly rotating themes to engage kids
+- $0 hosting cost (GitHub Pages)
+
 ## Features
 
 - **Weekly Themes**: Rotating themes including Harry Potter, Paw Patrol, Bluey, and more
@@ -18,7 +32,88 @@ A weekly family dashboard for Brisbane families to manage pocket money, view cal
 - **Ayda** (7 years old): $7/week, 3 customizable jobs  
 - **Finn** (4 years old): $4/week, 3 customizable jobs
 
-## Quick Start
+## 🚀 Development Status
+
+### ✅ Completed Features
+- **Pocket Money System**: Barefoot Investor approach with charity/savings/spending allocation
+- **Weekly Themes**: 8 rotating themes (Harry Potter, Paw Patrol, Bluey, Space, Ocean, Jungle, Princess, Superhero)
+- **Interactive Components**: Real-time job completion tracking, money allocation
+- **Charity Tracker**: Parent matching donations, progress visualization
+- **Photo Slideshow**: Ready for Google Photos integration (currently mock data)
+- **Calendar Events**: Ready for Google Calendar integration (currently mock data)
+- **Tasks Management**: Ready for Google Tasks integration (currently mock data)
+- **Weekly Reflection**: Family highlights, achievements, goals tracking
+- **Responsive Design**: Works on TV, tablet, mobile
+- **GitHub Pages Deployment**: $0 forever hosting
+
+### 🔄 Next Phase - Google Integration
+1. **Google Photos API**: Automatic family photo slideshow
+2. **Google Calendar API**: Real family events display
+3. **Google Tasks API**: Actual task management
+4. **Data Persistence**: Save family settings and progress
+
+### 🎨 Theme System
+Themes automatically rotate weekly based on date:
+- Week 1: Harry Potter ⚡ (Dark blue/gold)
+- Week 2: Paw Patrol 🐕 (Blue/orange)
+- Week 3: Bluey 🐶 (Light blue/yellow)
+- Week 4: Space Adventure 🚀 (Dark blue/white)
+- Week 5: Ocean Explorer 🌊 (Blue/cyan)
+- Week 6: Jungle Safari 🦁 (Green theme)
+- Week 7: Princess Castle 👑 (Pink/purple)
+- Week 8: Superhero 🦸 (Red/blue)
+
+## 💰 Pocket Money System (Barefoot Investor for Kids)
+
+### Children Setup
+- **Leni (10 years)**: $10/week → Jobs worth $2, $2, $6
+- **Ayda (7 years)**: $7/week → Jobs worth $2, $2, $3  
+- **Finn (4 years)**: $4/week → Jobs worth $1, $1, $2
+
+### Allocation Rules
+- Minimum $1 to charity (parents match donations)
+- Minimum $1 to savings
+- Minimum $1 to spending money
+- Kids decide the split during Sunday meetings
+
+### Job Examples
+- **Leni**: Feed pets, Tidy room, Help with dishes
+- **Ayda**: Make bed, Put toys away, Help set table
+- **Finn**: Put shoes away, Help sort washing, Water plants
+
+## 🛠 Technical Architecture
+
+### Frontend
+- **React 18**: Modern hooks-based components
+- **CSS Themes**: Dynamic theme switching
+- **Responsive Design**: Mobile-first approach
+- **Real-time Updates**: State management for multi-device sync
+
+### Hosting & Deployment
+- **GitHub Pages**: Free static hosting
+- **GitHub Actions**: Automated deployment via `npm run deploy`
+- **Custom Domain Ready**: Can add custom domain later
+
+### File Structure
+```
+src/
+├── components/           # All React components
+│   ├── PocketMoneyTracker.js    # Job completion & money allocation
+│   ├── CharityTracker.js        # Charity goals & parent matching
+│   ├── PhotoSlideshow.js        # Family photos display
+│   ├── CalendarEvents.js        # Upcoming events
+│   ├── TasksList.js             # Family tasks management
+│   └── WeeklyReflection.js      # Family meeting reflection
+├── utils/
+│   └── themes.js         # Weekly theme rotation logic
+└── App.js               # Main dashboard with navigation
+```
+
+## 🔗 Live URLs
+- **Production**: https://paul-bucketwise.github.io/family-dashboard
+- **Repository**: https://github.com/paul-bucketwise/family-dashboard
+
+## 📋 Development Commands
 
 1. **Install dependencies:**
    ```bash
