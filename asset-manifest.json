@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/family-dashboard/static/css/main.1fa9bdb5.css",
+    "main.js": "/family-dashboard/static/js/main.c5927acd.js",
+    "index.html": "/family-dashboard/index.html",
+    "main.1fa9bdb5.css.map": "/family-dashboard/static/css/main.1fa9bdb5.css.map",
+    "main.c5927acd.js.map": "/family-dashboard/static/js/main.c5927acd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1fa9bdb5.css",
+    "static/js/main.c5927acd.js"
+  ]
+}
